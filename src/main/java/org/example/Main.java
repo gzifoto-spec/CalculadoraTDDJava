@@ -1,17 +1,28 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        double firstOperand = 10;
+        double secondOperand = 5;
+
+        System.out.println("=== Calculator TDD ===");
+        System.out.println("Operands: " + firstOperand + " and " + secondOperand);
+        System.out.println("---------------------");
+        System.out.println("Addition:       " + firstOperand + " + " + secondOperand + " = " + calculator.add(firstOperand, secondOperand));
+        System.out.println("Subtraction:    " + firstOperand + " - " + secondOperand + " = " + calculator.subtract(firstOperand, secondOperand));
+        System.out.println("Multiplication: " + firstOperand + " * " + secondOperand + " = " + calculator.multiply(firstOperand, secondOperand));
+        System.out.println("Division:       " + firstOperand + " / " + secondOperand + " = " + calculator.divide(firstOperand, secondOperand));
+        System.out.println("---------------------");
+
+        System.out.println("\n=== Edge Cases ===");
+        System.out.println("Division by zero attempt:");
+        try {
+            calculator.divide(firstOperand, 0);
+        } catch (ArithmeticException e) {
+            System.out.println("  Caught: " + e.getMessage());
         }
     }
 }
